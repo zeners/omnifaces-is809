@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <!-- https://logback.qos.ch/access.html -->
+    <!-- always a good activate OnConsoleStatusListener -->
+    <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- https://logback.qos.ch/manual/layouts.html#dateAccess -->
+            <!-- @formatter:off -->
+            <pattern>
+                %date{yyyy-MM-dd HH:mm:ss.SSS} ACCES %localPort --- [%-15.15I] %-40.40(%h %server) : %statusCode %i{firmenkz} "%requestURL"; %bytesSent Bytes; %elapsedTime ms; ServiceStack: %i{X-ServiceStack}; Referer: %i{Referer}; UA: %i{User-Agent}; Req: %i{X-RequestID}; User: %i{zuul-username} %i{X-UserName}; Trans-Store: %i{JabinTransactionStore}; %reqAttribute{LOG_DETAILS}
+            </pattern>
+            <!--@formatter:on -->
+        </encoder>
+    </appender>
+    <appender-ref ref="STDOUT"/>
+</configuration>
